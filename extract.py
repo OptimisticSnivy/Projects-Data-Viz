@@ -47,6 +47,7 @@ for j in range(0,len(Capacity_perList)):
 
 df = pd.DataFrame({"Stadiums":StadiumsList,"Capacity_per":Capacity_perList,"Total_Capacity":TotalCapacity,"Average_Attendance":AverageAttend})
 print(df)
+
 # Plotting:-
-plt.scatter(reparr,reparrper)
+plt.scatter(reparrper,reparr)
 plt.show()
