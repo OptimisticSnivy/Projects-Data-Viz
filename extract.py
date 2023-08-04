@@ -3,6 +3,35 @@ import requests
 from bs4 import BeautifulSoup
 import pandas as pd
 import matplotlib.pyplot as plt
+import matplotlib as mpl
+from matplotlib import font_manager
+
+bg = '#ebdbb2'
+text_color = '#8f3f71'
+dot_color='#af3a03' 
+
+fig, ax = plt.subplots(figsize=(8,8))
+fig.set_facecolor(bg)
+ax.patch.set_facecolor(bg)
+
+ax.grid(color=text_color)
+
+# Fonts;-
+main_font = 'Ubuntu'
+fig.text(0.125,.925,"How well Premier League fans filled their Stadiums?",fontweight='bold',fontsize=17,color=text_color,fontfamily=main_font)
+fig.text(0.125,.90,"Premier League Season 22/23",fontweight='regular',fontsize=16,color=text_color,fontfamily=main_font)
+ax.set_xlabel("Capacity Filled by the Fans(in %)",fontweight='bold',fontsize=15,color=text_color,fontfamily=main_font)
+ax.set_ylabel("Total Capacity",fontweight='bold',fontsize=15,color=text_color,fontfamily=main_font)
+
+ax.tick_params(axis='x', colors=text_color)
+ax.tick_params(axis='y', colors=text_color)
+
+spines=['top','right','bottom','left']
+for s in spines:
+    if s in ['top','right']:
+        ax.spines[s].set_visible(False)
+    else:
+        ax.spines[s].set_color(text_color)
 
 headers = {'User-Agent': 
            'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.106 Safari/537.36'}
@@ -49,5 +78,7 @@ df = pd.DataFrame({"Stadiums":StadiumsList,"Capacity_per":Capacity_perList,"Tota
 print(df)
 
 # Plotting:-
-plt.scatter(reparrper,reparr)
+plt.ylabel("Total Capacity")
+plt.xlabel("Capacity Filled by the Fans(in %)")
+plt.scatter(reparrper,reparr,color=dot_color)
 plt.show()
