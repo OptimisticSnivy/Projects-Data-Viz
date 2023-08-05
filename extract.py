@@ -10,9 +10,8 @@ import matplotlib as mpl
 from matplotlib import font_manager
 from matplotlib.offsetbox import OffsetImage, AnnotationBbox
 
-
 def getImage(path):
-    return OffsetImage(plt.imread(path), zoom=0.25, alpha = 1)
+    return OffsetImage(plt.imread(path), zoom=0.215, alpha = 1)
 
 headers = {'User-Agent': 
            'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.106 Safari/537.36'}
@@ -70,16 +69,16 @@ bg = '#fafafa'
 text_color = '#2C0A3D'
 dot_color='#2C0A3D' 
 
-fig, ax = plt.subplots(figsize=(6,4),dpi=120)
+fig, ax = plt.subplots(figsize=(6,4),dpi=140)
 fig.set_facecolor(bg)
 ax.patch.set_facecolor(bg)
 
 # Fonts;-
 main_font = 'Ubuntu'
-fig.text(0.195,.925,"How well Premier League fans filled their Stadiums?",fontweight='bold',fontsize=17,color=text_color,fontfamily=main_font)
-fig.text(0.195,.90,"Premier League Season 22/23",fontweight='regular',fontsize=16,color=text_color,fontfamily=main_font)
-ax.set_xlabel("Capacity Filled by the Fans(in %)",fontweight='bold',fontsize=15,color=text_color,fontfamily=main_font)
-ax.set_ylabel("Total Capacity",fontweight='bold',fontsize=15,color=text_color,fontfamily=main_font)
+fig.text(0.185,.925,"How well Premier League fans filled their Stadiums?",fontweight='bold',fontsize=15,color=text_color,fontfamily=main_font)
+fig.text(0.185,.90,"Premier League Season 22/23",fontweight='regular',fontsize=13,color=text_color,fontfamily=main_font)
+ax.set_xlabel("Capacity Filled by the Fans(in %)",fontweight='regular',fontsize=13,color=text_color,fontfamily=main_font)
+ax.set_ylabel("Total Capacity",fontweight='regular',fontsize=13,color=text_color,fontfamily=main_font)
 
 ax.tick_params(axis='x', colors=text_color)
 ax.tick_params(axis='y', colors=text_color)
@@ -96,4 +95,9 @@ for index, row in df.iterrows():
     imm = getImage(row["path"])
     ab = AnnotationBbox(imm,(row["Capacity_per"], row["Total_Capacity"]),frameon=False)
     ax.add_artist(ab)
+
+ax2 = fig.add_axes([0.1,0.87,0.11,0.11])
+ax2.axis("off")
+img = Image.open('./logosforplot/pl.png')
+plt.imshow(img)
 plt.show()
