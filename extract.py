@@ -30,6 +30,8 @@ MetricExtractList = []
 reparr=[]
 reparrper=[]
 
+#Cleaning and Parsing;-
+
 del Stadiums[1::2]
 length=len(Stadiums)
 
@@ -56,14 +58,16 @@ for j in range(0,len(Capacity_perList)):
 
 StadiumsList.remove('Craven Cottage')
 
+#Visualisation Part;-
 path=[]
 for s in range(1,len(StadiumsList)+1):
     pathstr='./logosforplot/logo'+str(s)+'.png'
     path.append(pathstr)
 
+reparrper = reparrper[:-1]
+reparr = reparr[:-1]
 df = pd.DataFrame({"Stadiums":StadiumsList,"Total_Capacity":reparr,"Capacity_per":reparrper,"path":path})
 print(df)
-
 # Plotting:-
 bg = '#fafafa'
 text_color = '#2C0A3D'
@@ -74,7 +78,7 @@ fig.set_facecolor(bg)
 ax.patch.set_facecolor(bg)
 
 # Fonts;-
-main_font = 'Ubuntu'
+main_font = 'Cantarell'
 fig.text(0.185,.925,"How well Premier League fans filled their Stadiums?",fontweight='bold',fontsize=15,color=text_color,fontfamily=main_font)
 fig.text(0.185,.90,"Premier League Season 22/23",fontweight='regular',fontsize=13,color=text_color,fontfamily=main_font)
 ax.set_xlabel("Capacity Filled by the Fans(in %)",fontweight='regular',fontsize=13,color=text_color,fontfamily=main_font)
