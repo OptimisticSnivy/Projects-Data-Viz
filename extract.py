@@ -78,7 +78,7 @@ fig.set_facecolor(bg)
 ax.patch.set_facecolor(bg)
 
 # Fonts;-
-main_font = 'Cantarell'
+main_font = 'Cantarell:
 fig.text(0.185,.925,"How well Premier League fans filled their Stadiums?",fontweight='bold',fontsize=15,color=text_color,fontfamily=main_font)
 fig.text(0.185,.90,"Premier League Season 22/23",fontweight='regular',fontsize=13,color=text_color,fontfamily=main_font)
 ax.set_xlabel("Capacity Filled by the Fans(in %)",fontweight='regular',fontsize=13,color=text_color,fontfamily=main_font)
